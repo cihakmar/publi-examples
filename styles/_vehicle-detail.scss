@@ -1,0 +1,123 @@
+app-vehicle-detail {
+    &.ion-page {
+        color: var(--ion-color-light);
+
+        ion-content {
+            --background: transparent;
+            background: transparent url("~/assets/modal-bg.png") no-repeat center center / auto 101%;
+            padding: 0 20px;
+
+            //border-radius: 1rem;
+            overflow: hidden;
+
+            &::before {
+                background-color: rgba(0, 0, 0, 0.6);
+                content: "";
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 0;
+            }
+
+            .vehicle-info {
+                margin-top: 50px;
+                padding: 0 20px;
+                @media screen and (max-height: $mobile-breakpoint-height) {
+                    margin-top: 40px;
+                }
+
+                p {
+                    color: var(--ion-color-light);
+                    margin: 0;
+                }
+            }
+
+            .vehicle-detail-footer {
+                button {
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+
+                .buttons {
+                    .btn--link {
+                        &[disabled] {
+                            opacity: 1;
+
+                            span {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
+                    &.buttons--horizontal {
+                        .btn {
+                            font-size: 16px;
+                            @media screen and (max-height: $mobile-breakpoint-height) {
+                                font-size: 14px;
+                                height: 46px;
+                            }
+
+                            &:first-child {
+                                width: calc(55% - 46px);
+                            }
+
+                            &:last-child {
+                                width: 55%;
+                            }
+                        }
+
+                        &.buttons--one {
+                            .btn {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .img-wrapper {
+                margin: 65px auto 10px;
+                width: 80%;
+
+                &.img-wrapper--mt10 {
+                    @media screen and (max-height: $mobile-breakpoint-height) {
+                        margin-top: 10px;
+                    }
+                }
+
+                &.img-wrapper--mt30 {
+                    @media screen and (max-height: $mobile-breakpoint-height) {
+                        margin-top: 30px;
+                    }
+                }
+
+                @media screen and (max-height: $mobile-breakpoint-height) {
+                    margin-top: 55px;
+                }
+
+                + button {
+                    @media screen and (max-height: $mobile-breakpoint-height) {
+                        margin-top: -30px;
+                    }
+                }
+
+                &.img-wrapper-type-5 {
+                    margin-top: 40px;
+                    width: 70%;
+                }
+            }
+
+            .buttons {
+                button {
+                    @media screen and (max-height: $mobile-breakpoint-height) {
+                        padding: 10px 0;
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<span *ngIf="imageSource(imageType) && !uploading">
+    <span class="img-wrapper img-wrapper--profile-documents">
+        <img [src]="'data:image/png;base64,' + imageSource(imageType)" alt="document image">
+        <img [src]="'data:image/png;base64,' + imageSource(imageType)" alt="document image">
+    </span>
+</span>
+<span *ngIf="uploading">
+    <ion-spinner name="crescent"></ion-spinner>
+</span>
+<ion-icon name="arrow-forward" *ngIf="!imageSource(imageType) && !uploading">
+</ion-icon>

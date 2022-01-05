@@ -1,0 +1,14 @@
+<ion-footer [class.no-border]="platform.is('ios')">
+    <ion-toolbar color="dark">
+        <ion-buttons slot="primary">
+            <ion-button *ngFor="let p of pages" (click)="navTo(p.url)" [class.active]="p.url == activePage"
+                        [disabled]="disabled || loading" tappable>
+                <span>{{p.text | translate}}</span>
+            </ion-button>
+            <ion-button (click)="openMenu()" [disabled]="disabled" tappable>
+                <ion-icon name="menu"></ion-icon>
+                <span>{{'global.menu' | translate }}</span>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,131 @@
+ion-button {
+    contain: inherit;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    --border-radius: 4px;
+    --box-shadow: 0;
+    height: 46px;
+    margin: 0;
+    font-size: 14px;
+    font-family: var(--ion-font-family-medium);
+
+    &.btn {
+        &--link {
+            font-size: 14px;
+            text-decoration: underline;
+
+        }
+
+        &--close {
+            background-color: transparent;
+            color: var(--ion-color-light);
+            float: right;
+            font-size: 20px;
+            height: 50px;
+            margin: 0 -15px 0 0;
+            padding: 0;
+            width: 50px;
+        }
+
+        &--remove {
+            float: right;
+            height: 40px;
+            margin: 0;
+            padding: 0;
+            width: 40px;
+
+            ion-icon {
+                font-size: 30px;
+            }
+        }
+
+        &--icon {
+            font-family: var(--ion-font-family-medium);
+            overflow: visible;
+            position: relative;
+            text-indent: -46px;
+            margin-top: 20px;
+            width: 100%;
+
+            .icon-wrapper {
+                position: absolute;
+                width: 46px;
+                height: 46px;
+                background-color: var(--ion-color-primary);
+                right: 0;
+                top: 0;
+                z-index: -1;
+                display: flex;
+
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            ion-icon {
+                align-items: center;
+                border-bottom-right-radius: 4px;
+                border-top-right-radius: 4px;
+                color: var(--ion-color-dark);
+                display: flex;
+                flex-direction: column;
+                font-size: 24px;
+                height: 100%;
+                justify-content: center;
+                margin: 0;
+                text-indent: 0;
+
+                &.ion-logo-usd {
+                    font-size: 18px;
+                }
+
+                &[name="revolt"] {
+                    &::before {
+                        background: url("~/assets/re_icon.svg") no-repeat center center;
+                        content: "";
+                        height: 100%;
+                        left: 0;
+                        position: relative;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bottom-section {
+    .btn {
+        + .btn {
+            margin-top: 4px;
+        }
+    }
+}
+
+.buttons {
+    &.buttons--horizontal {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 0;
+
+        .btn {
+            + .btn {
+                margin: 0;
+            }
+        }
+    }
+
+    &.buttons--vertical {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,45 @@
+﻿<app-page [pull]="true" (reload)="load()" [title]="'page.title.pay' | translate" flex-column-center-between>
+    <ng-container>
+        <div *ngIf="contract" class="box-content">
+            <div class="top-section">
+                <ng-container>
+                    <ion-list class="normal-list">
+                        <ion-item>
+                            <span>{{ 'page.text.start' | translate }}</span>
+                            <span>{{ contract.start_at | datetime: showOnlyTime }}</span>
+                        </ion-item>
+                        <ion-item>
+                            <span>{{ 'page.text.end' | translate }}</span>
+                            <span>{{ contract.end_at | datetime: showOnlyTime }}</span>
+                        </ion-item>
+                        <ion-item tappable (click)="goTo('RideDetailPage')" class="item--link">
+                            <span></span>
+                            <span>{{ 'link.ride-history' | translate }}</span>
+                        </ion-item>
+                    </ion-list>
+                    <div class="taxameter-price-box taxameter-price-box__row taxameter-price-box__small">
+                        <div class="left">
+                            <p>{{ 'page.text.end-price' | translate }}</p>
+                        </div>
+                        <div class="right">
+                            <div class="price">
+                                <p> {{ contract.amount }}</p>
+                                <p>{{ 'global.currency' | translate }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="bottom-section">
+                <ion-button color="dark" (click)="pay()" class="btn btn--icon"
+                            [disabled]="loading || !statesSrv.isPayable(contract.payment_state, contract.amount, contract.payment_method)">
+                    {{ 'button.pay' | translate }}
+                    <div class="icon-wrapper" slot="end">
+                        <ion-icon name="logo-usd"></ion-icon>
+                    </div>
+                </ion-button>
+            </div>
+        </div>
+    </ng-container>
+</app-page>
+

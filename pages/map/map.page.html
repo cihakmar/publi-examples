@@ -1,0 +1,22 @@
+﻿<ion-content class="map-page-content">
+    <div id="map" #map></div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="light" (click)="reload()" [disabled]="loading">
+            <ion-icon name="reload" isActive="false"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="light" (click)="locate(true)" [disabled]="!geoSrv.available">
+            <ion-icon name="locate" isActive="false"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="light" (click)="presentVehicleFilter()">
+            <ion-icon name="funnel"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>
+<app-footer-menu [loading]="loading"></app-footer-menu>

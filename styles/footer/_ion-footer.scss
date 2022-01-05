@@ -1,0 +1,15 @@
+ion-footer {
+    &.no-border {
+        // sass-lint:disable no-important
+        border: 0 !important;
+        // sass-lint:enable no-important
+    }
+
+    &::before {
+        display: none;
+    }
+
+    &.footer-md {
+        border-bottom: .1rem solid var(--ion-color-medium-shade);
+    }
+}

@@ -1,0 +1,60 @@
+﻿<app-page [pull]="true" (reload)="refreshTaxamater()" [title]="'page.title.taxameter' | translate"
+          flex-column-center-between>
+    <div *ngIf="vehicle && contract && profile" class="box-content">
+        <div class="top-section">
+            <div class="taxameter-price-box">
+                <div class="price">
+                    <p [class.price-small]="taxameterSrv.taxameter.taxameterPriceLength >= 5"
+                       [class.price-middle]="taxameterSrv.taxameter.taxameterPriceLength > 2 && taxameterSrv.taxameter.taxameterPriceLength < 5"
+                       [class.price-big]="taxameterSrv.taxameter.taxameterPriceLength <= 2">{{ taxameterSrv.taxameter.taxameterPrice | round }}</p>
+                    <p>{{'global.currency' | translate}}</p>
+                </div>
+                <div class="img-wrapper img-wrapper--taxameter">
+                    <img src="{{vehicleImage}}" alt="car"/>
+                    <div class="vehicle-info">
+                        <span class="title">{{vehicle.badge}}-{{vehicle.licence_plate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <div class="taxameter-info">
+                <ion-list class="normal-list">
+                    <ion-item lines="none">
+                        <span>{{'page.text.price-before-credit' | translate}}</span>
+                        <span>{{ taxameterSrv.taxameter.amount_before_credit }} {{'global.currency' | translate}}</span>
+                    </ion-item>
+                    <ion-item lines="none">
+                        <span>{{'page.text.credits' | translate}}</span>
+                        <span>{{ profile.user_credit_amount }} {{'global.currency' | translate}}</span>
+                    </ion-item>
+                    <ion-item *ngIf="(discount > 0)" lines="none">
+                        <span>{{'page.text.rate' | translate}}</span>
+                        <span>{{ contract.unit_price }} {{'page.text.rate-currency-discount' | translate}} {{ discount }}
+                            %</span>
+                    </ion-item>
+                    <ion-item *ngIf="(discount == 0)" lines="none">
+                        <span>{{'page.text.rate' | translate}}</span>
+                        <span>{{ contract.unit_price }} {{'page.text.rate-currency' | translate}}</span>
+                    </ion-item>
+                </ion-list>
+                <ion-button color="dark" class="btn btn--icon" (click)="submit()">
+                    {{'button.end-ride' | translate}}
+                    <div class="icon-wrapper" slot="end">
+                        <ion-icon name="close"></ion-icon>
+                    </div>
+                </ion-button>
+
+                <app-vehicle-action-button [vehicleId]="vehicle.id" [type]="'unlock'" [contractId]="contract.id" [interval]="config.command_interval" [initialCounter]="lockAction"></app-vehicle-action-button>
+
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!contract || !vehicle || !profile" class="box-content">
+        <div class="top-section">
+            <div class="ride-info">
+                    {{'loading' | translate}}
+            </div>
+        </div>
+    </div>
+</app-page>
